@@ -32,5 +32,6 @@ const output = JSON.parse(rawOutput).contracts;
 fs.ensureDirSync(buildPath);
 
 for (const contract in output) {
-    fs.outputJSONSync(path.resolve(buildPath, `${contract.replace('.sol', '')}.json`), output[contract]);
+    const contractName = contract.replace('.sol', '');
+    fs.outputJSONSync(path.resolve(buildPath, `${contractName}.json`), output[contract][contractName]);
 }
